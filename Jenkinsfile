@@ -1,4 +1,8 @@
 node {
+  stage('Initialize'){
+    def mavenHome  = tool 'myMaven'
+    env.PATH = "${mavenHome}/bin:${env.PATH}"
+  }
   stage('Build') {
     git url: "https://github.com/tom2m/cart-service.git"
     sh "mvn package"
